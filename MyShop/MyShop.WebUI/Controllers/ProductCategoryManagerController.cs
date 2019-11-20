@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyShop.Core.Models;
 using MyShop.DataAccess.InMemory;
-using System.Web;
+using MyShop.Core.ViewModels;
 
 namespace MyShop.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
         ProductCategoryRepository context;
+       
 
         public ProductCategoryManagerController()
         {
             context = new ProductCategoryRepository();
+            
         }
         // GET: ProductManager
         public IActionResult Index()
@@ -56,7 +57,10 @@ namespace MyShop.WebUI.Controllers
             }
             else
             {
+
                 return View(productCategory);
+
+
             }
         }
 
