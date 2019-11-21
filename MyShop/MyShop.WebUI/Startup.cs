@@ -12,6 +12,9 @@ using MyShop.WebUI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyShop.Core.Contracts;
+using MyShop.Core.Models;
+using MyShop.DataAccess.InMemory;
 
 namespace MyShop.WebUI
 {
@@ -34,6 +37,8 @@ namespace MyShop.WebUI
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IRepository<Product>, InMemoryRepository<Product>>();
+            services.AddScoped<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
